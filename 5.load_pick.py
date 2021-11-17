@@ -20,7 +20,6 @@ mal_scoreCNT=0
 be_scoreCNT=0
 zero_scoreCNT =0
 for i in heat_score :
-    #if i <= 0 :
     if i > 0 :
         be_scoreCNT +=1
     elif i< 0 :
@@ -28,7 +27,6 @@ for i in heat_score :
     elif float(i)==float(0):
         zero_scoreCNT +=1
 
-#mal_heat_word = heat_word [0:scoreCNT]
 be_word = heat_word[0:be_scoreCNT]
 be_word = be_word.tolist()
 
@@ -40,10 +38,8 @@ print("mal",len(mal_heat_word))
 print("be",len(be_word))
 print(len(heat_score))
 
-with gzip.open('./output/mal_feature_acg.pickle', 'wb') as f:
+with gzip.open('./output_data/mal_feature_acg.pickle', 'wb') as f:
     pickle.dump(mal_heat_word, f)
-#    pickle.dump(be_word, f)
 
-with gzip.open('./output/be_feature_acg.pickle', 'wb') as f:
+with gzip.open('./output_data/be_feature_acg.pickle', 'wb') as f:
     pickle.dump(be_word, f)
-#    pickle.dump(mal_heat_word, f)

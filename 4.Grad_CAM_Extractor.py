@@ -18,6 +18,7 @@ import keras.backend as K
 import tensorflow as tf
  
  
+os.environ["CUDA_VISIBLE_DEVICES"]=''
  
 gpus = tf.config.experimental.list_physical_devices('GPU')
 if gpus:
@@ -50,9 +51,8 @@ with gzip.open('output_data/keyword_rev_dict.pickle', 'rb') as f:
 with gzip.open('output_data/api_call_word_list.pickle', 'rb') as f:
     all= pickle.load(f)
 
-model = load_model('CNN_output_data/CNN_last3.model')
+model = load_model('CNN_output_data/CNN.model')
 model.summary()
-#embe_vec = model.get_layer("embedding").get_weights()
 
 def grad_cam_conv1D(model, layer_nm, x, sample_weight=1, keras_phase=0):
 
@@ -84,7 +84,7 @@ for a in range(0,len(all)):
     val.append([])
 
 for idx in range(len(be_target),len(be_target)+len(target)):
-    hm, graded = grad_cam_conv1D(model, 'conv1d_5', x=train_x[idx])
+    hm, graded = grad_cam_conv1D(model, 'conv1d_1', x=train_x[idx])
     kww = [keyword_rev_dict[i] for i in train_x[idx]]
     for j in range(0,len(kww)):
         for k in range(0,len(all)):

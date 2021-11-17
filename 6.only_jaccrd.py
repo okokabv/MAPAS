@@ -11,9 +11,9 @@ import os
 mal_folder='./data/mal/'
 be_folder='./data/be/'
 
-with gzip.open('./output/be_feature_acg.pickle', 'rb') as f:
+with gzip.open('./output_data/be_feature_acg.pickle', 'rb') as f:
     be_feature_acg = pickle.load(f)
-with gzip.open('./output/mal_feature_acg.pickle', 'rb') as f:
+with gzip.open('./output_data/mal_feature_acg.pickle', 'rb') as f:
     feature_acg = pickle.load(f)
 
 with gzip.open('./output_acg.pickle', 'rb') as f:
